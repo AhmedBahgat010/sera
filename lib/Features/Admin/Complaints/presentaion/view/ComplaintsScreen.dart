@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:sera/Features/Admin/Reports/presentaion/view/widget/Container_Report.dart';
+import 'package:sera/Features/Admin/Complaints/presentaion/view/widget/Container_Report.dart';
 
 
-class ReportsScreen extends StatefulWidget {
-  ReportsScreen({super.key});
+class ComplaintsScreen extends StatefulWidget {
+  ComplaintsScreen({super.key});
 
 
   @override
-  State<ReportsScreen> createState() => _ReportsScreenState();
+  State<ComplaintsScreen> createState() => _ComplaintsScreenState();
 }
 
-class _ReportsScreenState extends State<ReportsScreen> {
+class _ComplaintsScreenState extends State<ComplaintsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Reports"),
+        title: const Text("Complaints and responses"),
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -25,7 +25,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 3,
-            itemBuilder: (context, index) => ContainerReport(),
+            itemBuilder: (context, index) => ContainerComplaint(),
           ),
         )),
       ),
