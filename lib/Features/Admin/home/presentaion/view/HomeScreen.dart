@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 titel: "Reports",
                 icon: Iconsax.presention_chart,
                 ontap: () {
-                  navigateTo(context, const ReportsScreen());
+                  navigateTo(context,  ReportsScreen());
                 },
               ),
               HomeContainer(
