@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../../../../Core/Utils/App Colors.dart';
 import '../../../../../../Core/Utils/App Textstyle.dart';
 import '../../../../../../Core/Utils/Widgets/ButtonTemplate/ButtonTemplate.dart';
@@ -82,9 +82,7 @@ class _ContainerRatingsState extends State<ContainerRatings> {
                   text: "Message :  ",
                   style: AppTextStyles.bold
                       .copyWith(color: AppColors.primaryColor, fontSize: 19),
-                  // style: AppTextStyles.w300.apply(
-                  //   color: Colors.black,
-                  // ),
+
                   children: <TextSpan>[
                     TextSpan(
                       text:
@@ -100,31 +98,20 @@ class _ContainerRatingsState extends State<ContainerRatings> {
                 ),
               ),
               const Divider(height: 20, color: Colors.black),
-              RichText(
-                text: TextSpan(
-                  text: "Rating :  ",
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.primaryColor, fontSize: 19),
-                  // style: AppTextStyles.w300.apply(
-                  //   color: Colors.black,
-                  // ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "3.5",
-                      style: AppTextStyles.bold.copyWith(
-                        color: Colors.grey.shade700,
-                        fontSize: 16,
-                      ),
-
-                      //  style: AppTextStyles.lrTitles
-                    ),
-                  ],
-                ),
-              ),
-
+              Row(
+                
+                children: [
+                  Text("Rating : ",style:  AppTextStyles.bold
+                      .copyWith(color: AppColors.primaryColor, fontSize: 19),),
+             Icon(Icons.star,color:Colors.amber,),
+             Icon(Icons.star,color:Colors.amber,),
+             Icon(Icons.star,color:Colors.amber,),
+             Icon(Icons.star,color:Colors.amber,),
+             Icon(Icons.star,color:Colors.amber,),
+                ],
+              )
             ],
           ),
-
         ],
       ),
     );

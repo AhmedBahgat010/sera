@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:sera/Features/Visitor/home/presentaion/view/HomevisitorScreen.dart';
 import '../../../../../Core/Utils/App Colors.dart';
 import '../../../../../Core/Utils/App Textstyle.dart';
 import '../../../../../Core/Utils/Assets Manager.dart';
@@ -115,23 +116,50 @@ class LoginScreen extends StatelessWidget {
                             },
                           ),
                           const SizedBox(height: 15),
+                          Row(children: <Widget>[
+                            const Expanded(child: Divider()),
+                            Text(
+                              "OR",
+                              style: AppTextStyles.w300.copyWith(fontSize: 18),
+                            ),
+                            const Expanded(child: Divider()),
+                          ]),
+                          const SizedBox(height: 15),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                  color: AppColors.primaryColor, width: 2),
+                            ),
+                            child: ButtonTemplate(
+                              width: MediaQueryHelper.sizeFromWidth(context, 1),
+                              colorText: AppColors.primaryColor,
+                              color: AppColors.backgroundColor,
+                              text1: 'Log in as guest',
+                              onPressed: () {
+                                navigateAndFinished(context, const HomeVisitorScreen());
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text("Don't have an account? ",
-                                  style: AppTextStyles.w300.copyWith(
-                                      fontSize: 18)),
+                                  style: AppTextStyles.w300
+                                      .copyWith(fontSize: 18)),
                               InkWell(
                                   onTap: () {
                                     navigateTo(context, RegisterScreen());
                                   },
                                   child: Text(' Sign up',
                                       style: AppTextStyles.bold.copyWith(
-                                          color: AppColors.primaryColor,fontSize: 18))),
+                                          color: AppColors.primaryColor,
+                                          fontSize: 18))),
                             ],
                           ),
                           const SizedBox(height: 15),
-
                         ],
                       ),
                     ),

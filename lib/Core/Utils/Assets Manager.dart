@@ -11,6 +11,11 @@ class AssetsManager {
   // images
 
   static const logoPrimerColor = '$_imagesFolder/logo.png';
+  static const background = '$_imagesFolder/home.png';
+  static const barbershop = '$_imagesFolder/barbershop.png';
+  static const hotel = '$_imagesFolder/hotel.png';
+  static const coffee  = '$_imagesFolder/coffee-shop.png';
+  static const restaurant = '$_imagesFolder/restaurant.png';
 
 
 }

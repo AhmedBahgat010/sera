@@ -22,8 +22,13 @@ class AppColors {
   }
 
   static const primaryColor = Color(0xFF0000CE);
+  static const logoColorYellow = Color(0xFFEBB014);
+  static const logoColorGreen= Color(0xFF33A180);
+  static const logoColorPurple  = Color(0xFFA3196F);
   static const primaryColorOrange = Color(0xFFFF8E42);
   // Brand Colors
+
+  //
   static const greenYellow = Color(_primaryColorValue);
   static const backgroundColor = Color(0xFFF5F5F9);
 
