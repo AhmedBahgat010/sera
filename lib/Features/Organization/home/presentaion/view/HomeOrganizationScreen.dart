@@ -2,16 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sera/Core/Utils/Assets%20Manager.dart';
 import 'package:sera/Core/Utils/Navigater.dart';
-import 'package:sera/Features/Visitor/home/presentaion/view/widget/Containe_Home.dart';
-import 'package:sera/Features/Visitor/home/presentaion/view/widget/ContainerModel.dart';
+
 import 'package:sera/Features/auth/presentaion/view/login_screen.dart';
 import '../../../../../Core/Utils/App Colors.dart';
 import '../../../../../Core/Utils/App Textstyle.dart';
 import '../../../../../Core/Utils/Responsive.dart';
-import '../../../../../Core/Utils/Widgets/MessageWidget/showMyDialog.dart';
+import '../../../../../Core/Utils/Widgets/CustomTabBar/CustomTabBar.dart';
+import '../../../Reservations/presentaion/view/widgets/DismissibleBackground.dart';
+import '../../../Reservations/presentaion/view/widgets/leave_request.dart';
 
-class HomeVisitorScreen extends StatelessWidget {
-  const HomeVisitorScreen({super.key});
+class HomeOrganizationScreen extends StatefulWidget {
+  const HomeOrganizationScreen({super.key});
+
+  @override
+  State<HomeOrganizationScreen> createState() => _HomeOrganizationScreenState();
+}
+
+class _HomeOrganizationScreenState extends State<HomeOrganizationScreen> {
+  int _currentTabIdx = 0;
+
+  void _onTabChanged(int index) {
+    if (index == _currentTabIdx) return;
+    setState(() => _currentTabIdx = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,43 +57,23 @@ class HomeVisitorScreen extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: constraints.maxHeight * .05,
-                      left: 14,
-                      child: Row(
-                        children: [
-                          SizedBox(
-                              height:
-                                  MediaQueryHelper.sizeFromHeight(context, 13),
-                              child: InkWell(
-                                  onTap: () {
-                                    navigateTo(context, LoginScreen());
-                                  },
-                                  child: Icon(
-                                    Iconsax.logout,
-                                    color: AppColors.white,
-                                    size: 30,
-                                  ))),
-                        ],
-                      ),
-                    ),
-                    Positioned(
                         top: constraints.maxHeight * .12,
                         // height: MediaQueryHelper.sizeFromHeight(context, 6),
                         left: 10,
                         right: 10,
-                        child:  Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Hello ,",
-                              style: AppTextStyles.w800
-                                  .copyWith(color: AppColors.white,fontSize: 33),
+                              "Hello Name Test,",
+                              style: AppTextStyles.w800.copyWith(
+                                  color: AppColors.white, fontSize: 33),
                             ),
                             Text(
                               "Welcome to Sera",
-                              style: AppTextStyles.lrTitles
-                                  .copyWith(color: AppColors.white,fontSize: 33),
+                              style: AppTextStyles.lrTitles.copyWith(
+                                  color: AppColors.white, fontSize: 33),
                             ),
                           ],
                         )),
@@ -88,36 +81,52 @@ class HomeVisitorScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 15),
+                padding: const EdgeInsets.only(
+                    top: 30, right: 15, left: 15, bottom: 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "All organizations",
+                      "All Reservations",
                       style:
                           AppTextStyles.bold.copyWith(fontSize: 20, height: 0),
-
                     ),
-                    GridView.count(
-                      crossAxisCount: 2,
+                    CustomTabBar(
+                      backgroundColor: AppColors.white,
+                      disableShadow: true,
+                      tabs: const [
+                        "Class one",
+                        "Class two",
+                        "Class three",
+                      ],
+                      selectedIndex: _currentTabIdx,
+                      onTabChanged: _onTabChanged,
+                    ),
+
+
+
+                    ListView.separated(
+                      padding: const EdgeInsets.all(24),    physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 20,
-                      physics: NeverScrollableScrollPhysics(),
-                      children: List.generate(
-                        containerModel.length,
-                            (index) =>
-                                ContainerHomeFeatures(
-                              image: containerModel[index].image,
-                              title: containerModel[index].title,
+                      itemCount: 5,
+                      separatorBuilder: (_, __) =>
+                      const SizedBox(height: 24),
+                      itemBuilder: (context, index) {
 
-                              ontap: () {
-                                navigateTo(
-                                    context, containerModel[index].ontap);
-                              }, color:  containerModel[index].color,
-                            ),
-                      ),
-                    ),
+
+
+
+                        return LeaveRequestCard(
+                          state: 0,
+                          childName: "Test Name",
+                          dateType: DateTime.now(),
+                          type:"test@gmail.com",
+                          dateTime: DateTime.now(),
+                          payIsLoading: false,
+                          rejectIsLoading: true,
+                        );
+                      },
+                    )
                   ],
                 ),
               ),

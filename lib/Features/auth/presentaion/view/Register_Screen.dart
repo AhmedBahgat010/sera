@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:sera/Features/Organization/home/presentaion/view/HomeOrganizationScreen.dart';
+import 'package:sera/Features/Organization/tabsScreens/presentaion/view/tabs_screen.dart';
 import '../../../../../Core/Utils/App Colors.dart';
 import '../../../../../Core/Utils/App Textstyle.dart';
 import '../../../../../Core/Utils/Assets Manager.dart';
@@ -184,7 +186,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: AppColors.primaryColor,
                             text1: 'Sign Up',
                             onPressed:(){
-
+                              navigateAndFinished(context, TabsScreen());
                             },
 
                           ),
